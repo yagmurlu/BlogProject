@@ -33,6 +33,13 @@ namespace DataAccessLayer.Concrete.Repositories
         {
             return c.Set<T>().ToList();
         }
+
+        public List<T> List(Expression<Func<T, bool>> filter)
+        {
+            using var c = new Context();
+            return c.Set<T>().Where(filter).ToList();
+        }
+
         public void Update(T p)
         {
             c.Update(p);
