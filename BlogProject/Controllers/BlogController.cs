@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlogProject.Controllers
 {
-    public class Blog : Controller
+    public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());  
         public IActionResult Index()
@@ -18,6 +18,7 @@ namespace BlogProject.Controllers
         }
         public IActionResult BlogReadAll(int id)
         {
+            ViewBag.i = id;
             var values = bm.GetBlogByID(id);
             return View(values);
         }
