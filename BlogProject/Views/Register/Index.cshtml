@@ -15,36 +15,43 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom01">Adınız</label>
-                            @Html.TextBoxFor(x=>x.WriterName, new {@class="form-control"})
-                            @Html.ValidationMessageFor(x=>x.WriterName,"", new {@class="text-danger"})
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
                             @*<input type="text" class="form-control" id="validationDefault01" name="WriterName" placeholder="" required="">*@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom02">Soyadınız</label>
                             @Html.TextBoxFor(x => x.WriterSurname, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(x => x.WriterSurname,"", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(x => x.WriterSurname, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom02">Mail Adresi</label>
                             @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(x => x.WriterMail,"", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword1 mb-2">Şifre</label>
                             @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(x => x.WriterPassword,"", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
                         </div>
-                        @*<div class="form-group col-md-6">
-                                <label for="exampleInputPassword2 mb-2">Confirm Password</label>
-                                <input type="password" class="form-control" id="password2" placeholder="" required="">
-                            </div>*@
-                    <div class="form-group col-md-6">
-                        <label for="exampleInputPassword2 mb-2">Resim Dosya Yolu</label>
-                        @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(x => x.WriterImage,"", new { @class = "text-danger" })
-                    </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Şifre Tekrar</label>
+                            <input type="password" name="PasswordAgain" class="form-control" />
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Resim Dosya Yolu</label>
+                            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterImage, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Şehir</label>
+                            @Html.DropDownList("cities", (ViewBag.Cities),"Şehir Seçiniz",new {@class="form-control dropdown"})
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
                     <p>
@@ -56,10 +63,10 @@
         </div>
     </div>
     <br />
-    
+
     <script>
         $('#btn1').click(function () {
-            swal("Site Kabul Şartları","Sitemizde verdiğiniz mail adresi üzerinden bilgi ve haber e-postalarıspam ölçüsüne varmadan gönderilemye devam edilecektir.");
+            swal("Site Kabul Şartları", "Sitemizde verdiğiniz mail adresi üzerinden bilgi ve haber e-postalarıspam ölçüsüne varmadan gönderilemye devam edilecektir.");
         });
     </script>
 </section>

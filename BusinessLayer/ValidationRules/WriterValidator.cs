@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
@@ -28,6 +29,21 @@ namespace BusinessLayer.ValidationRules
                 ("LÜtfen En Fazla Elli Karakterlik Veri Girişi Yapınız!");
             RuleFor(x => x.WriterSurname).MaximumLength(50).WithMessage
                ("LÜtfen En Fazla Elli Karakterlik Veri Girişi Yapınız!");
+            RuleFor(x => x.WriterPassword).Must(IsPasswordValid).WithMessage
+                ("En az 1 büyük harf, en az 1 küçük harf, en az 1 sayı bulunmalıdır.");
+        }
+        private bool IsPasswordValid(string arg)
+        {
+            try
+            {
+                Regex regex = new Regex(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[0-9])[A-Za-z\d]");
+                return regex.IsMatch(arg);
+            }
+            catch
+            {
+
+                return false;
+            }
         }
     }
 }

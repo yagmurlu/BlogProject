@@ -13,16 +13,16 @@ namespace BlogProject.Controllers
     {
         NewsLetterManager newsLetter = new NewsLetterManager(new EfNewsLetterRepository());
         [HttpGet]
-        public PartialViewResult SubscribeMail()
+        public IActionResult SubscribeMail()
         {
             return PartialView();
         }
         [HttpPost]      
-        public PartialViewResult SubscribeMail(NewsLetter letter)
+        public IActionResult SubscribeMail(NewsLetter letter)
         {
             letter.MailStatus = true;
             newsLetter.AddNewsLetter(letter);
-            return PartialView();
+            return RedirectToAction("Index","Blog");
         }
     }
 }
